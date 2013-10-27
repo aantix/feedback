@@ -1,0 +1,26 @@
+<div class="container">
+
+<% @feedbacks.each do |day, feedbacks| %>
+  <h3>
+    <%= day.strftime("%A, %b #{day.day.ordinalize} ") %>
+  </h3>
+
+  <% feedbacks.each do |feedback| %>
+    <div class="row feedback <%= cycle("odd", "even") %>">
+      <div class="span1">
+        <%= image_tag feedback.user.image.url(:thumb), class: "img-circle" %>
+      </div>
+      <div class="span8">
+        <blockquote>
+          <%= feedback.feedback %>
+          <small>
+            <%= feedback.user.name %> from <em><%= feedback.user.location %></em>
+          </small>
+        </blockquote>
+      </div>
+      <div class="span3">
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>

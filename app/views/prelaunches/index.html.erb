@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="span4 introduction">
+      <h2>
+        Your client's website is terrible, but you don't know exactly why..
+      </h2>
+
+      <h4>
+        Weekly feedback in your inbox until you get things right.
+      </h4>
+
+      <p class="lead">
+        FeedbackFor is a service that sends you weekly feedback until you find
+        clarity. Ask for feedback on your checkout process, the revised copy on
+        the front page, or your new color scheme.
+      </p>
+      <p class="lead">
+        Regular people will weigh in giving you insight as
+        to what is confusing and what they didn't like.
+        You get this crucial feedback delivered to your inbox on Monday morning.
+      </p>
+
+    </div>
+    <div class="span8">
+      <%= simple_form_for(@prelaunch) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :email %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, class: 'btn btn-primary' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

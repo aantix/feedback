@@ -1,0 +1,101 @@
+<div class="section webaddress">
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <h1 class="header">
+          Are your users<br/>
+          laughing at you?
+        </h1>
+        <p class="lead">
+          Consistent feedback is the only way to know
+          <br/>
+          whether you're delivering a solid product.
+        </p>
+
+        <fieldset class="enter_webaddress">
+          <label for="webaddress">Get feedack for your site or blog :</label>
+          <input name="webaddress" id="webaddress" type="text" placeholder="Enter an address : http://www.example.com"/>
+          <%= link_to "Go!", "#email", class: "btn btn-primary" %>
+        </fieldset>
+
+      </div>
+      <div class="span6">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section email" id="email">
+  <div class="container">
+    <div class="row">
+      <div class="span5">
+        <h2 class="header">
+          Critial feedback<br/>
+          increases sales
+        </h2>
+
+        <p class="lead">
+          How do you know if what you're
+          building is really what the
+          user wants?
+          <br/>
+          We will ask them for you. Everyday.
+        </p>
+
+        <fieldset>
+          <label for="webaddress">Who should we send the feedback to?</label>
+          <input name="email" id="email" type="text" placeholder="jim@example.com"/>
+          <%= link_to "Go!", "#plans", class: "btn btn-primary" %>
+        </fieldset>
+      </div>
+      <div class="span7">
+        <%= image_tag "feedback_screenshot.png", :class => "header" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section plans" id="plans">
+  <div class="pagination-centered">
+      <h2>
+        How often do you want to receive feedback?
+      </h2>
+
+      <p class="lead">
+        You will receive the feedback on your website
+        <br>
+        from a diverse group of people sent right to your inbox.
+      </p>
+
+  </div>
+
+  <div class="row subscriptions">
+    <div class="span3"></div>
+    <div class="span2 well">
+      <div class="plan"><h2>Monthly</h2></div>
+      <ul class="unstyled">
+        <li>A monthly update of feedback is provided from ten users</li>
+      </ul>
+      <h3>$9/month</h3>
+      <%= link_to 'Subscribe', new_user_registration_path(:plan => 'silver'), :class => 'btn btn-primary' %>
+    </div>
+    <div class="span2 well offset1 featured">
+      <div class="plan featured-plan"><h2>Weekly</h2></div>
+      <ul class="unstyled">
+        <li>A diverse group of users will provide feedback weekly</li>
+      </ul>
+      <h3>$19/month</h3>
+      <%= link_to 'Subscribe', new_user_registration_path(:plan => 'gold'), :class => 'btn btn-primary' %>
+    </div>
+    <div class="span2 offset1 well">
+      <div class="plan"><h2>Daily</h2></div>
+      <ul class="unstyled">
+        <li>Feedback is sent to you every morning</li>
+      </ul>
+      <h3>$29/month</h3>
+      <%= link_to 'Subscribe', new_user_registration_path(:plan => 'platinum'), :class => 'btn btn-primary' %>
+    </div>
+    <div class="span1"></div>
+  </div>
+</div>

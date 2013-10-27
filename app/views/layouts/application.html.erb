@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Daily, Weekly or Monthly Website Testing, Usability and Feedback" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Recurly Subscription Saas" %>">
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "jquery.pagescroller.lite" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body class="<%= controller_name %> <%= action_name %>">
+  <div class="navbar navbar-fixed-top">
+    <nav class="navbar-inner">
+      <div class="container">
+        <%= render 'layouts/navigation' %>
+      </div>
+    </nav>
+  </div>
+
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+
+  <footer class="pagination-centered">
+    Copyright Lisbon St Labs, <%= Time.now.year %> &copy;. Made in San Francisco.
+  </footer>
+</body>
+</html>
