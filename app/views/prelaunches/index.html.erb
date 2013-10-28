@@ -1,40 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="span4 introduction">
-      <h2>
-        Your client's website is terrible, but you don't know exactly why..
-      </h2>
-
-      <h4>
-        Weekly feedback in your inbox until you get things right.
+<div class="container-fluid">
+  <div class="row-fluid columns">
+    <div class="span12 photo">
+      <h4 class="pagination-centered">
+        Fresh, actionable feedback for <span class="text-info">your website</span>,
+        <br/>
+        delivered to your inbox each week
       </h4>
 
-      <p class="lead">
-        FeedbackFor is a service that sends you weekly feedback until you find
-        clarity. Ask for feedback on your checkout process, the revised copy on
-        the front page, or your new color scheme.
-      </p>
-      <p class="lead">
-        Regular people will weigh in giving you insight as
-        to what is confusing and what they didn't like.
-        You get this crucial feedback delivered to your inbox on Monday morning.
-      </p>
+      <%= form_for(@prelaunch, :remote => true, html: {class: 'beta-form'}) do |f| %>
+          <h4>
+            We're launching soon,
+            <br/>
+            we'll notify you!
+          </h4>
 
-    </div>
-    <div class="span8">
-      <%= simple_form_for(@prelaunch) do |f| %>
-          <%= f.error_notification %>
-
-          <div class="form-inputs">
-            <%= f.input :first_name %>
-            <%= f.input :last_name %>
-            <%= f.input :email %>
+          <div class="row-fluid">
+            <div class="span3">
+              <%= f.text_field :first_name, :placeholder => "First name" %>
+            </div>
+            <div class="span8">
+              <%= f.text_field :email, :placeholder => "Email address" %>
+              <%= f.submit 'Notify me!', class: 'btn btn-success' %>
+            </div>
           </div>
+          <p/>
 
-          <div class="form-actions">
-            <%= f.button :submit, class: 'btn btn-primary' %>
-          </div>
       <% end %>
+
     </div>
   </div>
 </div>

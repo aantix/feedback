@@ -7,6 +7,9 @@ RailsRecurlySubscriptionSaas::Application.routes.draw do
   get "content/gold"
   get "content/silver"
   get "content/platinum"
+
+  match 'beta', to: 'prelaunches#index', via: :get
+
   authenticated :user do
     root :to => 'home#index'
   end
