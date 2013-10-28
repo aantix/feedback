@@ -25,8 +25,8 @@ user.save!
 puts 'user: ' << user.name
 user.add_role :admin
 
-user2 = User.find_or_create_by_email :first_name => 'Andres', :last_name => 'Camacho', :email => 'user2@example.com', :password => 'changeme', :password_confirmation => 'changeme', :location => 'San Francisco, CA'
-user2.image = profile_path('andres.png')
+user2 = User.find_or_create_by_email :first_name => 'Brian', :last_name => 'Bencker', :email => 'user2@example.com', :password => 'changeme', :password_confirmation => 'changeme', :location => 'Kansas City, MO'
+user2.image = profile_path('brian.png')
 user2.save!
 user2.add_role :silver
 
@@ -44,6 +44,6 @@ puts "users: #{user2.name}, #{user3.name}, #{user4.name}"
 
 page = Page.create(url: "https://www.fiveaskfive.com", :user => user)
 
-page.feedbacks.create! :feedback => "Love the colors, but I find it quite confusing as to why there's a skateboarder, fly fisherman, and some haunted house all on the homepage?", :user => user2
-page.feedbacks.create! :feedback => "I'm trying to find one place on the sight that shows one of these 'epic' chats, but I don't see any videos.  Makes me feel like not much is going on here.", :user => user3
-page.feedbacks.create! :feedback => "In the section below the big imagery, it's unclear to me as to why you need our help?  Isn't it your job to seek out the celebrities?", :user => user4
+page.feedbacks.create! :feedback => "Love the colors, but I find the imagery for the main carousel quite confusing.  I'm confused as to why there's a skateboarder, fly fisherman, and some haunted house all on the homepage?", :user => user2
+page.feedbacks.create! :feedback => "I'm trying to find one place on the sight that shows one of these 'epic' chats, but I don't see any videos.  Makes me feel like there isn't much going on here.", :user => user3
+page.feedbacks.create! :feedback => "In the section below the big imagery, it's unclear to me as to why you need our help?  Does the user themselves have to create the tweets or is this something that is sent to me to post later?", :user => user4
