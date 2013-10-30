@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :url, :user
+  attr_accessible :name, :url, :user
 
   has_many :feedbacks
   belongs_to :user

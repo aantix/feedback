@@ -2,17 +2,25 @@
   <div class="row-fluid columns">
     <div class="span12 photo">
       <h4>
-        10 random people visit <span class="text-info">your site</span>.<br/>
+        10 average users visit <span class="text-info">your site</span>.<br/>
         They share what they <span class="text-warning">disliked</span>.<br/>
-        Weekly you'll receive this <span class="text-error">critical feedback</span>.
+        This <span class="text-error">critical feedback</span> is emailed every week.
       </h4>
 
       <%= form_for(@prelaunch, :remote => true, html: {class: 'beta-form'}) do |f| %>
           <h4>
-            We're launching soon,
-            <br/>
-            we'll notify you!
+            We're launching soon!
           </h4>
+
+          <div class="row-fluid">
+            <div class="span12 lead pagination-centered text-warning">
+              The first <span class="info">1,000</span> to sign up for the beta <br/>
+              will receive <span class="text-success">FREE</span> feedback when we launch!<br/>
+              <span class="info">
+                <%= Prelaunch.all.size + 637 %> have already signed up.
+              </span>
+            </div>
+          </div>
 
           <div class="row-fluid">
             <div class="span3">

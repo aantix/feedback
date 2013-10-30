@@ -12,6 +12,7 @@ group :production do
   gem 'pg'
 end
 gem 'jquery-rails'
+gem 'jquery-easing-rails'
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 gem "database_cleaner", ">= 1.0.0.RC1", :group => :test
 gem "email_spec", ">= 1.4.0", :group => :test

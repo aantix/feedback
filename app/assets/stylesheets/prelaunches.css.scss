@@ -51,12 +51,17 @@ body.prelaunches {
 
     .beta-form {
       position: absolute;
-      padding-top: 70px;
       padding-left: 20px;
       bottom: 0;
       right: 0;
       line-height: 40px;
       vertical-align: middle;
+      background-color: rgba(0,0,0,0.4);
+      display: none;
+
+      .info {
+        color: #FFF;
+      }
 
 
       #prelaunch_first_name {

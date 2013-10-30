@@ -42,10 +42,17 @@ user4.add_role :platinum
 
 puts "users: #{user2.name}, #{user3.name}, #{user4.name}"
 
-page = Page.create(url: "https://www.fiveaskfive.com", :user => user)
+page = Page.create(name: "Cart Checkout", url: "https://www.shopping.com/checkout", :user => user)
 
-page.feedbacks.create! :feedback => "Love the colors, but I find the imagery for the main carousel quite confusing.  I'm confused as to why there's a skateboarder, fly fisherman, and some haunted house all on the homepage?", :user => user2
-page.feedbacks.create! :feedback => "I'm trying to find one place on the sight that shows one of these 'epic' chats, but I don't see any videos.  Makes me feel like there isn't much going on here.", :user => user3
-page.feedbacks.create! :feedback => "In the section below the big imagery, it's unclear to me as to why you need our help?  Does the user themselves have to create the tweets or is this something that is sent to me to post later?", :user => user4
+now = DateTime.now
+monday = (now - now.wday) + 1.day
+next_monday = monday + 7.days
+
+page.created_at = next_monday
+page.save!
+
+page.feedbacks.create! :feedback => "I left my shopping cart because I couldn't find where the shipping was listed.  It's a big item so that made me nervous.", :user => user2, :created_at => next_monday
+page.feedbacks.create! :feedback => "I had to hunt around to find where to increase the quantity.  It expected it to be on the checkout page but it wasn't.", :user => user3, :created_at => next_monday
+page.feedbacks.create! :feedback => "Is it possble to have larger images? The product listings for the search are small and somewhat hard to see especially when the items are already small.", :user => user4, :created_at => next_monday
 
 Question.seed_questions

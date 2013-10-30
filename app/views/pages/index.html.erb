@@ -1,26 +1,40 @@
 <div class="container">
 
-<% @feedbacks.each do |day, feedbacks| %>
-  <h3>
-    <%= day.strftime("%A, %b #{day.day.ordinalize} ") %>
-  </h3>
-
-  <% feedbacks.each do |feedback| %>
-    <div class="row feedback <%= cycle("odd", "even") %>">
-      <div class="span1">
-        <%= image_tag feedback.user.image.url(:thumb), class: "img-circle" %>
-      </div>
-      <div class="span8">
-        <blockquote>
-          <%= feedback.feedback %>
-          <small>
-            <%= feedback.user.first_name %> from <em><%= feedback.user.location %></em>
-          </small>
-        </blockquote>
-      </div>
-      <div class="span3">
-      </div>
+  <div class="row">
+    <div class="span8">
+      <h2 class="muted">
+        <%= @pages.first.name %> Page
+        <%= link_to "edit", @pages.first, class: 'btn btn-primary' %>
+      </h2>
     </div>
+  </div>
+
+  <% @feedbacks.each do |day, feedbacks| %>
+      <h4>
+        <% end_day = day + 6.days %>
+        Feedback for
+        <span class="">
+          <%= day.strftime("%A, %b #{day.day.ordinalize} ") %> - <%= end_day.strftime("%A, %b #{end_day.day.ordinalize} ") %>
+        </span>
+        <hr>
+      </h4>
+
+      <% feedbacks.each do |feedback| %>
+          <div class="row feedback <%= cycle("odd", "even") %>">
+            <div class="span1">
+              <%= image_tag feedback.user.image.url(:thumb), class: "img-circle" %>
+            </div>
+            <div class="span8">
+              <blockquote>
+                <%= feedback.feedback %>
+                <small>
+                  <%= feedback.user.first_name %> from <em><%= feedback.user.location %></em>
+                </small>
+              </blockquote>
+            </div>
+            <div class="span3">
+            </div>
+          </div>
+      <% end %>
   <% end %>
-<% end %>
 </div>
