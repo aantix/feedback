@@ -1,5 +1,6 @@
 RailsRecurlySubscriptionSaas::Application.routes.draw do
   resources :prelaunches, :only => [:index, :create]
+  resources :feedbacks, :only => [:new, :create]
   resources :pages
 
   get "recurly/test"

@@ -47,3 +47,5 @@ page = Page.create(url: "https://www.fiveaskfive.com", :user => user)
 page.feedbacks.create! :feedback => "Love the colors, but I find the imagery for the main carousel quite confusing.  I'm confused as to why there's a skateboarder, fly fisherman, and some haunted house all on the homepage?", :user => user2
 page.feedbacks.create! :feedback => "I'm trying to find one place on the sight that shows one of these 'epic' chats, but I don't see any videos.  Makes me feel like there isn't much going on here.", :user => user3
 page.feedbacks.create! :feedback => "In the section below the big imagery, it's unclear to me as to why you need our help?  Does the user themselves have to create the tweets or is this something that is sent to me to post later?", :user => user4
+
+Question.seed_questions
