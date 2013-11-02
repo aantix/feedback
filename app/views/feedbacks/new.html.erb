@@ -13,17 +13,19 @@
 <%= turkee_form_for(@page, params) do |f| %>
     <fieldset>
       <legend>Questions</legend>
-      <% @questions.each do |question| %>
-          <h4>
+      <%# @questions.each do |question| %>
+      <% question = @questions.first %>
+         <h4>
             <%= question.question %>
-          </h4>
+         </h4>
 
-          <%= f.fields_for :feedbacks do |fb| %>
-              <%= fb.hidden_field :question_id, :value => question.id %>
-              <%= fb.hidden_field :page_id, :value => @page.id %>
+
+          <%= f.fields_for :feedbacks, Feedback.new do |fb| %>
+              <%# fb.hidden_field :question_id, :value => question.id %>
+              <%# fb.hidden_field :page_id, :value => @page.id %>
               <%= fb.text_area :feedback, :disabled => @disabled %>
           <% end %>
-      <% end %>
+      <%# end %>
 
       <br/>
       <%= f.submit "Done", :disabled => @disabled %>

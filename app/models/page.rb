@@ -2,6 +2,7 @@ class Page < ActiveRecord::Base
   attr_accessible :name, :url, :user
 
   has_many :feedbacks
+  accepts_nested_attributes_for :feedbacks
   belongs_to :user
 
   def self.request_feedback
@@ -12,7 +13,7 @@ class Page < ActiveRecord::Base
       t = Turkee::TurkeeTask.create_hit(host,
                                     "Quick feedback for webpage",
                                     "Click on the site below and explore the site a bit.  Then answer the following questions.",
-                                    Feedback,
+                                    :Feedback,
                                     1, # assignments
                                     0.51, # reward
                                     2, #days
@@ -26,6 +27,6 @@ class Page < ActiveRecord::Base
   end
 
   def self.host
-    Rails.env.production? ? "http://www.weeklyfeedback.com" : "https://localhost:3000"
+    Rails.env.production? ? "https://quiet-reaches-1909.herokuapp.com" : "https://localhost:3000"
   end
 end

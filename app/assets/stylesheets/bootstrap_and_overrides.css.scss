@@ -1,6 +1,8 @@
 $navbarHeight: 60;
 
+@import "bootswatch/journal/variables";
 @import "bootstrap";
+
 body { padding-top: 30px; }
 
 .navbar .brand {
@@ -17,4 +19,7 @@ input[type="week"], input[type="number"], input[type="email"], input[type="url"]
 input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
   margin-bottom: 0px;
 }
+
+
 @import "bootstrap-responsive";
+@import "bootswatch/journal/bootswatch";
