@@ -20,7 +20,11 @@
   </div>
 
   <%= render 'layouts/messages' %>
-  <%= yield %>
+  <%= yield(:hero) if content_for?(:hero) %>
+
+  <div class="container">
+    <%= yield %>
+  </div>
 
   <footer class="pagination-centered">
     Copyright Lisbon St. Labs, <%= Time.now.year %> &copy;. Made in San Francisco.

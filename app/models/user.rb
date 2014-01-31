@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
   before_create :check_recurly
   before_destroy :cancel_subscription
 
-  has_many :pages
-  has_many :feedbacks, :through => :pages
+  has_many :feedback_pages
+  has_many :feedbacks, :through => :feedback_pages
 
   mount_uploader :image, ImageUploader
 

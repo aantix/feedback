@@ -12,13 +12,13 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the home\s?page/
+    when /the home\s?feedback_page/
       '/'
 
-    when /the sign up page/
+    when /the sign up feedback_page/
       '/users/sign_up'
 
-    when /the sign in page/
+    when /the sign in feedback_page/
       '/users/sign_in'
 
     # Add more mappings here.
@@ -29,7 +29,7 @@ module NavigationHelpers
 
     else
       begin
-        page_name =~ /the (.*) page/
+        page_name =~ /the (.*) feedback_page/
         path_components = $1.split(/\s+/)
         self.send(path_components.push('path').join('_').to_sym)
       rescue Object => e

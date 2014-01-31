@@ -42,7 +42,7 @@ user4.add_role :platinum
 
 puts "users: #{user2.name}, #{user3.name}, #{user4.name}"
 
-page = Page.create(name: "Cart Checkout", url: "https://www.shopping.com/checkout", :user => user)
+page = FeedbackPage.create(name: "Main Page", url: "https://basecamp.com/", :user => user)
 
 now = DateTime.now
 monday = (now - now.wday) + 1.day
@@ -52,7 +52,7 @@ page.created_at = next_monday
 page.save!
 
 page.feedbacks.create! :feedback => "I left my shopping cart because I couldn't find where the shipping was listed.  It's a big item so that made me nervous.", :user => user2, :created_at => next_monday
-page.feedbacks.create! :feedback => "I had to hunt around to find where to increase the quantity.  It expected it to be on the checkout page but it wasn't.", :user => user3, :created_at => next_monday
+page.feedbacks.create! :feedback => "I had to hunt around to find where to increase the quantity.  It expected it to be on the checkout feedback_page but it wasn't.", :user => user3, :created_at => next_monday
 page.feedbacks.create! :feedback => "Is it possble to have larger images? The product listings for the search are small and somewhat hard to see especially when the items are already small.", :user => user4, :created_at => next_monday
 
 Question.seed_questions

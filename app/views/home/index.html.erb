@@ -1,73 +1,74 @@
-<div class="section webaddress">
-  <div class="container">
-    <div class="row">
-      <div class="span6">
-        <h1 class="header">
-          Are your users<br/>
-          laughing at you?
-        </h1>
-        <p class="lead">
-          Consistent feedback is the only way to know
-          <br/>
-          whether you're delivering a solid product.
-        </p>
+<%- content_for :hero do %>
+    <div class="section webaddress">
+      <div class="container">
+        <div class="row">
+          <div class="span6">
+            <h1 class="header">
+              Are your users<br/>
+              laughing at you?
+            </h1>
 
-        <fieldset class="enter_webaddress">
-          <label for="webaddress">Get feedack for your site or blog :</label>
-          <input name="webaddress" id="webaddress" type="text" placeholder="Enter an address : http://www.example.com"/>
-          <%= link_to "Go!", "#email", class: "btn btn-primary" %>
-        </fieldset>
+            <p class="lead">
+              Consistent feedback is the only way to know
+              <br/>
+              whether you're delivering a solid product.
+            </p>
 
+            <fieldset class="enter_webaddress">
+              <label for="webaddress">Get feedack for your site or blog :</label>
+              <input name="webaddress" id="webaddress" type="text" placeholder="Enter an address : http://www.example.com"/>
+              <%= link_to "Go!", "#email", class: "btn btn-primary" %>
+            </fieldset>
+
+          </div>
+          <div class="span6">
+          </div>
+
+        </div>
       </div>
-      <div class="span6">
-      </div>
-
     </div>
-  </div>
-</div>
+<% end %>
 
 <div class="section email" id="email">
-  <div class="container">
-    <div class="row">
-      <div class="span5">
-        <h2 class="header">
-          Critial feedback<br/>
-          increases sales
-        </h2>
+  <div class="row">
+    <div class="span5">
+      <h2 class="header">
+        Critial feedback<br/>
+        increases sales
+      </h2>
 
-        <p class="lead">
-          How do you know if what you're
-          building is really what the
-          user needs?
-          <br/>
-          We will ask them and send you the results.
-          <span class="text-success">Weekly feedback</span> delivered to your inbox.
-        </p>
+      <p class="lead">
+        How do you know if what you're
+        building is really what the
+        user needs?
+        <br/>
+        We will ask them and send you the results.
+        <span class="text-success">Weekly feedback</span> delivered to your inbox.
+      </p>
 
-        <fieldset>
-          <label for="webaddress">Who should we send the feedback to?</label>
-          <input name="email" id="email" type="text" placeholder="jim@example.com"/>
-          <%= link_to "Go!", "#plans", class: "btn btn-primary" %>
-        </fieldset>
-      </div>
-      <div class="span7">
-        <%= image_tag "feedback_screenshot.png", :class => "header" %>
-      </div>
+      <fieldset>
+        <label for="webaddress">Who should we send the feedback to?</label>
+        <input name="email" id="email" type="text" placeholder="jim@example.com"/>
+        <%= link_to "Go!", "#plans", class: "btn btn-primary" %>
+      </fieldset>
+    </div>
+    <div class="span7">
+      <%= image_tag "feedback_screenshot.png", :class => "header" %>
     </div>
   </div>
 </div>
 
 <div class="section plans" id="plans">
   <div class="pagination-centered">
-      <h2>
-        How often do you want to receive feedback?
-      </h2>
+    <h2>
+      How often do you want to receive feedback?
+    </h2>
 
-      <p class="lead">
-        You will receive the feedback on your website
-        <br>
-        from a diverse group of people sent right to your inbox.
-      </p>
+    <p class="lead">
+      You will receive the feedback on your website
+      <br>
+      from a diverse group of people sent right to your inbox.
+    </p>
 
   </div>
 

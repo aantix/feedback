@@ -1,0 +1,33 @@
+<div class="text-success">
+  <p>
+    Visit the following website :<br/>
+    <%= link_to @feedback_page.url, @feedback_page.url %>
+  </p>
+
+  <p>
+    Then answer the following questions about the site you just viewed. You must respond
+    with a detailed 5-6 sentence paragraph for each question, otherwise your work may be rejected.
+  </p>
+</div>
+
+<%= turkee_form_for(@feedback_page, params) do |f| %>
+    <fieldset>
+      <legend>Questions</legend>
+      <%# @questions.each do |question| %>
+      <% question = @questions.first %>
+      <h4>
+        <%= question.question %>
+      </h4>
+
+
+      <%= f.fields_for :feedbacks, Feedback.new do |fb| %>
+          <%= fb.hidden_field :question_id, :value => question.id %>
+          <%= fb.hidden_field :feedback_page_id, :value => @feedback_page.id %>
+          <%= fb.text_area :feedback, :disabled => @disabled %>
+      <% end %>
+      <%# end %>
+
+      <br/>
+      <%= f.submit "Done", :disabled => @disabled %>
+    </fieldset>
+<% end %>

@@ -2,6 +2,8 @@ ruby "2.0.0"
 source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'mysql2'
+gem 'spring'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

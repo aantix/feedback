@@ -1,7 +1,7 @@
 RailsRecurlySubscriptionSaas::Application.routes.draw do
   resources :prelaunches, :only => [:index, :create]
   resources :feedbacks, :only => [:new, :create]
-  resources :pages
+  resources :feedback_pages
 
   get "recurly/test"
   post "recurly/push"

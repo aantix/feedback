@@ -1,5 +1,5 @@
-class Page < ActiveRecord::Base
-  attr_accessible :name, :url, :user
+class FeedbackPage < ActiveRecord::Base
+  attr_accessible :name, :url, :user, :feedbacks_attributes
 
   has_many :feedbacks
   accepts_nested_attributes_for :feedbacks
@@ -9,17 +9,17 @@ class Page < ActiveRecord::Base
     qualifications =  {:approval_rate => {:gt => 70}, :country => {:eql => 'US'}}
 
     puts "Requesting feedback..."
-    Page.all.each do |p|
+    FeedbackPage.all.each do |p|
       t = Turkee::TurkeeTask.create_hit(host,
                                     "Quick feedback for webpage",
                                     "Click on the site below and explore the site a bit.  Then answer the following questions.",
-                                    :Feedback,
-                                    1, # assignments
+                                    :FeedbackPage,
+                                    1,    # assignments
                                     0.51, # reward
-                                    2, #days
-                                    2, # hours max duration
+                                    2,    # days
+                                    2,    # hours max duration
                                     qualifications,
-                                    {:page_id => p.id}, {})
+                                    {:feedback_page_id => p.id}, {})
 
       puts t.hit_url
     end
