@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'mysql2'
 gem 'spring'
+gem 'rollbar'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
