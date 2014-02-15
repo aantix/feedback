@@ -42,7 +42,7 @@ user4.add_role :platinum
 
 puts "users: #{user2.name}, #{user3.name}, #{user4.name}"
 
-page = FeedbackPage.create(name: "Main Page", url: "https://basecamp.com/", :user => user)
+page = FeedbackPage.create(name: "Main Page", url: "https://basecamp.com/", user: user)
 
 now = DateTime.now
 monday = (now - now.wday) + 1.day

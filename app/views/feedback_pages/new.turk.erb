@@ -6,28 +6,31 @@
 
   <p>
     Then answer the following questions about the site you just viewed. You must respond
-    with a detailed 5-6 sentence paragraph for each question, otherwise your work may be rejected.
+    with at least two paragraphs, each 5-6 sentences for each question, otherwise your work may be rejected.
+  </p>
+
+  <p>
+    It's imperative that a lot of detail is included within your description.
   </p>
 </div>
 
 <%= turkee_form_for(@feedback_page, params) do |f| %>
     <fieldset>
       <legend>Questions</legend>
-      <%# @questions.each do |question| %>
-      <% question = @questions.first %>
-      <h4>
-        <%= question.question %>
-      </h4>
+      <% @questions.each do |question| %>
+          <h4>
+            <%= question.question %>
+          </h4>
 
+          <%= f.fields_for :feedbacks, Feedback.new do |fb| %>
+              <%= fb.hidden_field :question_id, :value => question.id %>
+              <%= fb.hidden_field :feedback_page_id, :value => @feedback_page.id %>
+              <%= fb.text_area :feedback, :disabled => @disabled, :rows => 4 %>
+          <% end %>
+          <%# end %>
 
-      <%= f.fields_for :feedbacks, Feedback.new do |fb| %>
-          <%= fb.hidden_field :question_id, :value => question.id %>
-          <%= fb.hidden_field :feedback_page_id, :value => @feedback_page.id %>
-          <%= fb.text_area :feedback, :disabled => @disabled %>
+          <br/>
       <% end %>
-      <%# end %>
-
-      <br/>
-      <%= f.submit "Done", :disabled => @disabled %>
     </fieldset>
+    <%= f.submit "Done", :disabled => @disabled %>
 <% end %>

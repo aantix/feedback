@@ -31,7 +31,6 @@ class FeedbackPagesController < ApplicationController
   # GET /feedback_pages/new
   # GET /feedback_pages/new.json
   def new
-    puts "new#####"
     @feedback_page = FeedbackPage.new
 
     respond_to do |format|
@@ -39,7 +38,7 @@ class FeedbackPagesController < ApplicationController
       format.turk do
         @disabled      = Turkee::TurkeeFormHelper::disable_form_fields?(params)
         @feedback_page = FeedbackPage.find(params[:feedback_page_id])
-        @questions     = Question.default_questions
+        @questions     = User.current_questions_for(params[:user_id])
 
         render :layout => false
       end

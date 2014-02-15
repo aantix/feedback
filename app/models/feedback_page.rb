@@ -6,7 +6,7 @@ class FeedbackPage < ActiveRecord::Base
   belongs_to :user
 
   def self.request_feedback
-    qualifications =  {:approval_rate => {:gt => 70}, :country => {:eql => 'US'}}
+    qualifications =  {:approval_rate => {:gt => 80}, :country => {:eql => 'US'}}
 
     puts "Requesting feedback..."
     FeedbackPage.all.each do |p|
@@ -14,12 +14,13 @@ class FeedbackPage < ActiveRecord::Base
                                     "Quick feedback for webpage",
                                     "Click on the site below and explore the site a bit.  Then answer the following questions.",
                                     :FeedbackPage,
-                                    1,    # assignments
-                                    0.51, # reward
+                                    2,    # assignments
+                                    1.51, # reward
                                     2,    # days
-                                    2,    # hours max duration
+                                    5,    # hours max duration
                                     qualifications,
-                                    {:feedback_page_id => p.id}, {})
+                                    {:feedback_page_id => p.id,
+                                     :user_id          => p.user.id}, {})
 
       puts t.hit_url
     end
@@ -27,6 +28,6 @@ class FeedbackPage < ActiveRecord::Base
   end
 
   def self.host
-    Rails.env.production? ? "https://quiet-reaches-1909.herokuapp.com" : "https://localhost:3000"
+    Rails.env.production? ? "https://quiet-reaches-1909.herokuapp.com" : "http://localhost:3000"
   end
 end

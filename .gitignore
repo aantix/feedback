@@ -16,6 +16,7 @@
 /vendor/ruby/
 
 # minimal Rails specific artifacts
+config/initializers/turkee.rb
 db/*.sqlite3
 /log/*
 /tmp/*

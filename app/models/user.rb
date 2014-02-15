@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   before_create :check_recurly
   before_destroy :cancel_subscription
 
+  belongs_to :question_type
   has_many :feedback_pages
   has_many :feedbacks, :through => :feedback_pages
 
@@ -19,6 +20,15 @@ class User < ActiveRecord::Base
 
   def name
     name = "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
+  def self.current_questions_for(user_id)
+    user = User.find user_id
+    Question.questions_for(user.question_type_id)
+  end
+
+  def current_questions
+    User.current_questions_for(self.id)
   end
 
   def check_recurly
