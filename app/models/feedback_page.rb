@@ -6,7 +6,7 @@ class FeedbackPage < ActiveRecord::Base
   belongs_to :user
 
   def self.request_feedback
-    if Date.today.wday == 6 # Saturday
+    if Date.today.wday == 0 # Sunday
       qualifications = {:approval_rate => {:gt => 80}, :country => {:eql => 'US'}}
 
       puts "Requesting feedback..."
