@@ -6,7 +6,9 @@ class FeedbackPage < ActiveRecord::Base
   belongs_to :user
 
   def self.request_feedback
-    if Date.today.wday == 0 # Sunday
+    # The Heroku scheduler only allows for daily scheduling. Since I want weekly, we'll
+    #   just put in a check for it.
+    if Date.today.wday == 1 # Monday
       qualifications = {:approval_rate => {:gt => 80}, :country => {:eql => 'US'}}
 
       puts "Requesting feedback..."
