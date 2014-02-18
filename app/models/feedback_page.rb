@@ -8,26 +8,31 @@ class FeedbackPage < ActiveRecord::Base
   def self.request_feedback
     # The Heroku scheduler only allows for daily scheduling. Since I want weekly, we'll
     #   just put in a check for it.
-    if Date.today.wday == 1 # Monday
-      qualifications = {:approval_rate => {:gt => 80}, :country => {:eql => 'US'}}
+    begin
+      if Date.today.wday == 1 # Monday
+        qualifications = {:approval_rate => {:gt => 80}, :country => {:eql => 'US'}}
 
-      puts "Requesting feedback..."
-      FeedbackPage.all.each do |p|
-        t = Turkee::TurkeeTask.create_hit(host,
-                                          "Quick feedback for webpage",
-                                          "Click on the site below and explore the site a bit.  Then answer the following questions.",
-                                          :FeedbackPage,
-                                          2, # assignments
-                                          1.51, # reward
-                                          2, # days
-                                          5, # hours max duration
-                                          qualifications,
-                                          {:feedback_page_id => p.id,
-                                           :user_id => p.user.id}, {})
+        puts "Requesting feedback..."
+        FeedbackPage.all.each do |p|
+          t = Turkee::TurkeeTask.create_hit(host,
+                                            "Quick feedback for webpage",
+                                            "Click on the site below and explore the site a bit.  Then answer the following questions.",
+                                            :FeedbackPage,
+                                            2, # assignments
+                                            1.51, # reward
+                                            2, # days
+                                            5, # hours max duration
+                                            qualifications,
+                                            {:feedback_page_id => p.id,
+                                             :user_id => p.user.id}, {})
 
-        puts t.hit_url
+          puts t.hit_url
+        end
+        puts "HITs posted."
       end
-      puts "HITs posted."
+    rescue Exception => e
+      # Probably something wrong with the MTurk account (funds, etc)
+      Rollbar.report_exception(e)
     end
   end
 
