@@ -9,7 +9,7 @@ class FeedbackPage < ActiveRecord::Base
     # The Heroku scheduler only allows for daily scheduling. Since I want weekly, we'll
     #   just put in a check for it.
     begin
-      if Date.today.wday == 1 # Monday
+      if Date.today.wday == ENV['FEEDBACK_DAY'] || 2 # Tuesday
         qualifications = {:approval_rate => {:gt => 80}, :country => {:eql => 'US'}}
 
         puts "Requesting feedback..."
